@@ -2,18 +2,25 @@ import { setLoading } from "@/slices/authSlice"
 import { toast } from "sonner"
 import { apiConnector } from "../apiConnector"
 import { profileEndpoints } from "../apis"
+import { data } from "autoprefixer"
 
 const {
     GET_MATCHED_PROVIDERS_API
 } = profileEndpoints
 
-export const getMatchedProviders = async() => {
+export const getMatchedProviders = async(query) => {
     const toastId = toast.loading("Loading...");
     let result = [];
 
+    console.log("query: ", query)
+
     try {
         // Await the API response
-        let res = await apiConnector("GET", GET_MATCHED_PROVIDERS_API, null, null, null);
+        let res = await apiConnector("POST", GET_MATCHED_PROVIDERS_API, 
+        {
+            query
+        }
+        );
 
         if (!res?.data?.success) {
             throw new Error("Could not fetch matched providers");

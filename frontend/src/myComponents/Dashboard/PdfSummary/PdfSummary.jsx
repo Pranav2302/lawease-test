@@ -126,26 +126,26 @@ const PDFSummary = () => {
     <div className="container mx-auto p-6">
       <h1 className="text-3xl font-bold mb-8 text-center">Legal Document Summarization</h1>
       
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 rounded-md ">
         {/* Results Panel - Larger */}
         <Card className="md:col-span-8 order-2 md:order-1">
-          <CardHeader className="bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+          <CardHeader className="bg-gradient-to-r from-gray-800 to-black text-white rounded-md">
             <CardTitle className="text-2xl flex items-center">
               <BarChart2 className="mr-2 h-6 w-6" />
               Document Analysis Results
             </CardTitle>
-            <CardDescription className="text-blue-100">
+            <CardDescription className="text-gray-300">
               View the extracted information and summary of your legal document
             </CardDescription>
           </CardHeader>
           <CardContent className="p-6">
             <div className="bg-white border rounded-lg shadow-sm">
               {!uploadSuccess ? (
-                <div className="text-center text-gray-400 h-80 flex items-center justify-center p-4">
+                <div className="text-center text-gray-400 h-80 flex items-center justify-center p-4 ">
                   {isLoading ? (
                     <div className="flex flex-col items-center">
-                      <Loader2 className="h-16 w-16 animate-spin mb-4 text-blue-500" />
-                      <p className="text-lg font-medium text-blue-600">Processing your document...</p>
+                      <Loader2 className="h-16 w-16 animate-spin mb-4 text-black" />
+                      <p className="text-lg font-medium text-black">Processing your document...</p>
                       <p className="text-gray-500 mt-2">This may take a moment</p>
                     </div>
                   ) : (
@@ -193,7 +193,7 @@ const PDFSummary = () => {
                 </div>
               ) : (
                 <div className="text-center h-80 flex flex-col items-center justify-center p-4">
-                  <FileText className="h-16 w-16 text-blue-500 mb-3" />
+                  <FileText className="h-16 w-16 text-black mb-3" />
                   <h3 className="text-xl font-medium mb-2">Document Uploaded Successfully</h3>
                   <p className="text-gray-500 mb-6 max-w-md">
                     Your document is ready for analysis. Click the button below to generate a summary.
@@ -201,7 +201,7 @@ const PDFSummary = () => {
                   <Button 
                     onClick={fetchSummary}
                     disabled={isFetchingSummary}
-                    className="bg-blue-600 hover:bg-blue-700"
+                    className="bg-black hover:bg-black/80"
                     size="lg"
                   >
                     {isFetchingSummary ? (
@@ -236,7 +236,7 @@ const PDFSummary = () => {
                 {uploadSuccess && !summary && !isFetchingSummary && (
                   <Button
                     onClick={fetchSummary}
-                    className="bg-blue-600 hover:bg-blue-700 flex items-center"
+                    className="bg-black hover:bg-black/80 flex items-center"
                     disabled={isFetchingSummary}
                   >
                     {isFetchingSummary ? (
@@ -315,10 +315,10 @@ const PDFSummary = () => {
                   </Button>
                 </div>
                 {file && (
-                  <div className="mt-3 p-2 bg-blue-50 rounded border border-blue-100">
+                  <div className="mt-3 p-2 bg-gray-50 rounded border border-gray-200">
                     <div className="flex items-center text-sm">
-                      <FileText className="h-4 w-4 mr-2 text-blue-500" />
-                      <p className="font-medium text-blue-700 truncate">{file.name}</p>
+                      <FileText className="h-4 w-4 mr-2 text-black" />
+                      <p className="font-medium text-gray-700 truncate">{file.name}</p>
                     </div>
                     <p className="text-xs text-gray-500 mt-1 pl-6">
                       {(file.size / (1024 * 1024)).toFixed(2)} MB

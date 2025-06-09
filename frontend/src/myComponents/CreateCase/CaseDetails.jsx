@@ -10,7 +10,7 @@ import { ChevronRight } from 'lucide-react';
 
 // import { uploadToCloudinary } from "../utils/uploadToCloudinary";
 
-export default function CaseDetails({appendToFormData, goToNextStep}) {
+export default function CaseDetails({appendToFormData, goToNextStep, description, setDescription}) {
   const [dragActive, setDragActive] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
   const [recordedAudio, setRecordedAudio] = useState(null);
@@ -19,7 +19,6 @@ export default function CaseDetails({appendToFormData, goToNextStep}) {
   const [caseTranscribe, setCaseTranscribe] = useState("");
 
 
-  const [description, setDescription] = useState("");
   const [files, setFiles] = useState([]);
 
   const handleDescriptionChange = (e) => {

@@ -121,51 +121,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile menu, show/hide based on menu state */}
-      <div className="md:hidden">
-        <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-          <NavLink
-            to="/dashboard"
-            className={({ isActive }) =>
-              isActive
-                ? "text-primary opacity-100 block px-3 py-2 rounded-md text-base font-medium"
-                : "text-gray-800 opacity-50 hover:opacity-100 transition-all duration-200 block px-3 py-2 rounded-md text-base font-medium"
-            }
-          >
-            Dashboard
-          </NavLink>
-          <NavLink
-            to="/providers"
-            className={({ isActive }) =>
-              isActive
-                ? "text-primary opacity-100 block px-3 py-2 rounded-md text-base font-medium"
-                : "text-gray-800 opacity-50 hover:opacity-100 transition-all duration-200 block px-3 py-2 rounded-md text-base font-medium"
-            }
-          >
-            Providers
-          </NavLink>
-          <NavLink
-            to="/leaderboard"
-            className={({ isActive }) =>
-              isActive
-                ? "text-primary opacity-100 block px-3 py-2 rounded-md text-base font-medium"
-                : "text-gray-800 opacity-50 hover:opacity-100 transition-all duration-200 block px-3 py-2 rounded-md text-base font-medium"
-            }
-          >
-            Leaderboard
-          </NavLink>
-
-          {token == null ? (
-            <Button variant="outline" className="w-full mt-4">
-              Login
-            </Button>
-          ) : (
-            <Button variant="outline" className="w-full mt-4">
-              Logout
-            </Button>
-          )}
-        </div>
-      </div>
+      
     </nav>
   );
 }

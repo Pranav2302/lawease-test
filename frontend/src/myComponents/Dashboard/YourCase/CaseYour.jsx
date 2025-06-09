@@ -221,7 +221,6 @@ const CaseYour = () => {
         <button onClick={() => setSelectedCase(null)} className="mr-4 text-gray-500 hover:text-black">
           <ChevronLeft className="size-5" />
         </button>
-        <h1 className="text-2xl font-bold">Case: {selectedCase?.description || "Unknown"}</h1>
       </div>
 
       {/* Case details card */}

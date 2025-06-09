@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { FileCheck2 } from 'lucide-react';
 
 
-const MatchedProvider = ({appendToFormData, handleCaseCreation}) => {
+const MatchedProvider = ({appendToFormData, handleCaseCreation, query}) => {
   const [loading, setLoading] = useState(false);
   const [providers, setProviders] = useState(null);
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const MatchedProvider = ({appendToFormData, handleCaseCreation}) => {
     const getInstructors = async () => {
       setLoading(true);
 
-      const matchedInstructors = await getMatchedProviders();
+      const matchedInstructors = await getMatchedProviders(query);
 
       if (matchedInstructors) {
         setProviders(matchedInstructors);

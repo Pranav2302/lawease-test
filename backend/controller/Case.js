@@ -440,7 +440,7 @@ exports.uploadPdfForSummary = async(req, res) => {
               const axios = require('axios');
               
               const summaryResponse = await axios.get(
-                'https://8b7e-34-126-137-93.ngrok-free.app//get_summary?file_path=/content/downloaded_file.pdf',
+                'https://c4be-34-125-86-193.ngrok-free.app//get_summary?file_path=/content/downloaded_file.pdf',
                 { 
                   headers: { 'Content-Type': 'application/json' }
                 }
@@ -490,7 +490,7 @@ exports.uploadPdfForSummary = async(req, res) => {
         
         try {
             const processingResponse = await axios.post(
-                'https://8b7e-34-126-137-93.ngrok-free.app/download_pdf',
+                'https://c4be-34-125-86-193.ngrok-free.app/download_pdf',
                 { url: pdfUrl },
                 { 
                     headers: { 'Content-Type': 'application/json' }

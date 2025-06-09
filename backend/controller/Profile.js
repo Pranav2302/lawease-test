@@ -4,6 +4,7 @@ const { uploadToCloudinary } = require("../utils/uploadToCloudinary");
 const { default: axios } = require("axios");
 require("dotenv").config();
 const FormData = require("form-data");
+const mongoose = require('mongoose');
 
 
 //profile set of advocate
@@ -56,13 +57,15 @@ exports.setProfile = async(req,res) => {
       const capDistrict = district.toUpperCase()
       const capTaluka = taluka.toUpperCase()
       const BAR_COUNCIL_API = process.env.BAR_COUNCIL_API
-      const barName = `${capTaluka} TALUKA   BAR ASSOCIATION,   ${capDistrict}`
-        
+      const barName = `${capTaluka} TALUKA   BAR ASSOCIATION,  ${capDistrict}`
+      
       //fetch data from bar council
       try {
         //make form data
         const formData = new FormData();
         formData.append("barname", barName);
+
+        console.log("formData", formData)
         
         //make api call
         const response = await axios.post(
@@ -74,6 +77,8 @@ exports.setProfile = async(req,res) => {
                 }
             }
           );
+
+          console.log("response", response)
 
         //find if user is enrolled
         const advocateList = response.data || [];
@@ -147,12 +152,36 @@ exports.setProfile = async(req,res) => {
 //TODO: here we are accesssing all providers for now
 exports.getMatchedProviders = async(req,res) => {
   try {
-    //api call to python 
+    console.log("req.body", req.body.query)
+    const description = req.body.query
+    const PYTHON_MATCHING = "http://127.0.0.1:6000/recommend"
+    // const response = await apiConnector("POST", PYTHON_MATCHING,  
+    // {
+    //   description
+    // })
 
-    //get category
+    const response = await axios.post(PYTHON_MATCHING, {
+      query: description
+    })
 
-    //get top 3 providers from that category 
-    const providers = await User.find({ accountType: "Provider",}).populate("additionalDetails")  
+    console.log("response", response.data.matched_lawyers)
+
+    //get matched provider id
+    const providerDetails = response.data.matched_lawyers
+
+    //extract all the ids from the array of matched lawyers
+    const providerIds = providerDetails.map(item => item.id)
+    console.log("providerIds", providerIds)
+    
+    // Use the newer approach to convert string IDs to MongoDB ObjectIds
+    const objectIds = providerIds.map(id => mongoose.Types.ObjectId.createFromHexString(id));
+    
+    console.log("objectIds", objectIds)
+    
+    // Query the database to find users where additionalDetails matches any ID in objectIds
+    const providers = await User.find({ accountType: "Provider", additionalDetails: { $in: objectIds } }).populate("additionalDetails")
+
+    console.log("providers", providers);
 
     return res.status(200).json({
       success: true,

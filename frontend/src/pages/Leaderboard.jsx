@@ -20,7 +20,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 const topLawyers = [
   {
     id: 1,
-    name: "Sarah Johnson",
+    name: "Suraj Kumar",
     avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgPZE_LOqt3pg8ds9UwTFhU80B7XpcosFYTQ&s",
     specialty: "Corporate Law",
     winRate: 92,
@@ -31,7 +31,7 @@ const topLawyers = [
   },
   {
     id: 2,
-    name: "Michael Chen",
+    name: "Rahul Sharma",
     avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQAlqFotKhHtRCqSJxAKWVm1qFulsiOtU2ZZg&s",
     specialty: "Intellectual Property",
     winRate: 89,
@@ -42,7 +42,7 @@ const topLawyers = [
   },
   {
     id: 3,
-    name: "Elena Rodriguez",
+    name: "Priyansh Patel",
     avatar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7AloJFVQf4Vae-gGD1D5vxzp7Go7vtdoklQ&s",
     specialty: "Criminal Defense",
     winRate: 87,
@@ -54,7 +54,7 @@ const topLawyers = [
   // Current user
   {
     id: 4,
-    name: "You (James Wilson)",
+    name: "You (Pranav Kamble)",
     avatar: "/placeholder.svg?height=80&width=80",
     specialty: "Family Law",
     winRate: 82,
@@ -105,7 +105,8 @@ export default function Leaderboard() {
   const currentUserRank = filteredLawyers.findIndex((lawyer) => lawyer.isCurrentUser) + 1
 
   return (
-    <div className="flex min-h-screen w-full flex-col bg-white dark:bg-gray-950">
+    <div className="w-full flex items-centerc justify-center">
+      <div className="flex min-h-screen  flex-col bg-white dark:bg-gray-950 mt-16 w-11/12">
       <header className="sticky top-0 z-10 flex h-16 items-center justify-between border-b bg-white px-4 md:px-6 dark:bg-gray-950 dark:border-gray-800">
         <h1 className="text-lg font-semibold md:text-2xl dark:text-white">Legal Analytics Dashboard</h1>
         <div className="flex items-center gap-4">
@@ -237,7 +238,8 @@ export default function Leaderboard() {
                   </div>
                   <div className="flex flex-col items-center">
                     <span className="text-sm text-muted-foreground dark:text-gray-400">Revenue</span>
-                    <span className="text-xl font-bold dark:text-white">${(lawyer.revenue / 1000).toFixed(0)}K</span>
+                    <span className="text-xl font-bold dark:text-white">₹
+                    {(lawyer.revenue / 1000).toFixed(0)}K</span>
                   </div>
                 </div>
               </CardContent>
@@ -353,6 +355,7 @@ export default function Leaderboard() {
           </CardContent>
         </Card>
       </main>
+    </div>
     </div>
   )
 }

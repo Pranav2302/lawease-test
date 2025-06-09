@@ -12,6 +12,8 @@ const CaseCreation = () => {
   const [loading, setLoading] = useState(false);
   const dispatch = useDispatch()
   const navigate = useNavigate();
+  const [description, setDescription] = useState("");
+
 
   const token = useSelector((state) => state.auth.token);
 
@@ -40,11 +42,14 @@ const CaseCreation = () => {
     <div className="mt-14">
       {step === 1 ? (
         <CaseDetails
+          description={description}
+          setDescription={setDescription}
           appendToFormData={appendToFormData}
           goToNextStep={goToNextStep}
         />
       ) : (
         <MatchedProvider
+          query={description}
           appendToFormData={appendToFormData}
           handleCaseCreation={handleCaseCreation}
         />

@@ -22,45 +22,63 @@ import { Textarea } from "@/components/ui/textarea"
 const initialMilestones = [
   {
     id: 1,
-    title: "Project Initiation",
-    description: "Initial project setup and requirements gathering",
+    title: "Case Creation",
+    description: "User submits a legal case with necessary details and documents.",
     status: "Completed",
     payment: 500,
-    comments: "All requirements documented and approved",
+    comments: "Case successfully created and assigned to a legal expert.",
   },
   {
     id: 2,
-    title: "Design Phase",
-    description: "UI/UX design and prototyping",
+    title: "Legal Service Provider Assignment",
+    description: "System assigns a verified legal professional to the case.",
     status: "Completed",
     payment: 1000,
-    comments: "Designs finalized after client feedback",
+    comments: "Advocate assigned and client notified.",
   },
   {
     id: 3,
-    title: "Development Sprint 1",
-    description: "Core functionality implementation",
+    title: "Initial Consultation",
+    description: "First interaction between client and legal expert.",
     status: "Pending",
     payment: 1500,
-    comments: "Awaiting approval for completed features",
+    comments: "Awaiting client availability for consultation.",
   },
   {
     id: 4,
-    title: "Development Sprint 2",
-    description: "Additional features implementation",
+    title: "Case Review & Document Verification",
+    description: "Legal expert reviews submitted documents for accuracy and validity.",
     status: "Pending",
     payment: 1500,
     comments: "",
   },
   {
     id: 5,
-    title: "Testing Phase",
-    description: "QA and bug fixing",
+    title: "Drafting Legal Documents",
+    description: "Preparation of legal drafts, contracts, or petitions.",
     status: "Rejected",
     payment: 800,
-    comments: "Failed security testing, needs revision",
+    comments: "Draft requires revision due to missing details.",
   },
-]
+  {
+    id: 6,
+    title: "Court Filing & Proceedings",
+    description: "Case is filed in court and initial hearing date is set.",
+    status: "Pending",
+    payment: 2000,
+    comments: "",
+  },
+  {
+    id: 7,
+    title: "Case Resolution & Closure",
+    description: "Final case resolution with legal outcome or settlement.",
+    status: "Pending",
+    payment: 2500,
+    comments: "Awaiting final judgment or agreement.",
+  },
+];
+
+
 
 export default function MilestoneManage() {
   const [milestones, setMilestones] = useState(initialMilestones)
